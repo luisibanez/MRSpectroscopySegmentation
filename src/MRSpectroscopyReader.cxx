@@ -61,6 +61,11 @@ int main( int argc, char* argv[] )
 
   std::cout << "Dimensions = " << imageSize[0] << " x " << imageSize[1] << std::endl;
 
+  const gdcm::PixelFormat & pixelFormat = image.GetPixelFormat();
+
+  pixelFormat.Print( std::cout );
+
+
   return EXIT_SUCCESS;
 
 }
