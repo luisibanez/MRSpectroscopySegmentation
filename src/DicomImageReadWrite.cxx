@@ -22,10 +22,10 @@
 int main( int argc, char* argv[] )
 {
 
-  if( argc < 3 )
+  if( argc < 2 )
     {
     std::cerr << "Usage: " << std::endl;
-    std::cerr << argv[0] << " DicomImage OutputImage" << std::endl;
+    std::cerr << argv[0] << " InputDicomImage " << std::endl;
     return EXIT_FAILURE;
     }
 
@@ -41,7 +41,7 @@ int main( int argc, char* argv[] )
   gdcm::Attribute<0x5600,0x0020> at;
   at.Set( dataset );
 
-  std::cout << at.GetValue() << std::endl;
+  std::cout << "VALUE = " << at.GetValue() << std::endl;
 
 
   return EXIT_SUCCESS;
