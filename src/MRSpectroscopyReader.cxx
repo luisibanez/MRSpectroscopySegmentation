@@ -16,7 +16,8 @@
  *
  *=========================================================================*/
 
-#include "gdcmReader.h"
+#include "gdcmImage.h"
+#include "gdcmImageReader.h"
 #include "gdcmAttribute.h"
 
 int main( int argc, char* argv[] )
@@ -29,7 +30,7 @@ int main( int argc, char* argv[] )
     return EXIT_FAILURE;
     }
 
-  gdcm::Reader reader;
+  gdcm::ImageReader reader;
 
   reader.SetFileName( argv[1] );
   reader.Read();
@@ -53,6 +54,12 @@ int main( int argc, char* argv[] )
     std::cerr << "Found    : " << SOPClassUID    << " length = " << SOPClassUID.length()    << std::endl;
     return EXIT_FAILURE;
     }
+
+  const gdcm::Image & image = reader.GetImage();
+
+  const unsigned int * imageSize = image.GetDimensions();
+
+  std::cout << "Dimensions = " << imageSize[0] << " x " << imageSize[1] << std::endl;
 
   return EXIT_SUCCESS;
 
