@@ -65,6 +65,12 @@ int main( int argc, char* argv[] )
 
   pixelFormat.Print( std::cout );
 
+  const double *spacing = image.GetSpacing();
+  std::cout << "Spacing = " << spacing[0] << ", " << spacing[1] << std::endl;
+
+  const double *origin = image.GetOrigin();
+  std::cout << "Origin = " << origin[0] << ", " << origin[1] << ", " << origin[2] << std::endl;
+
 
   return EXIT_SUCCESS;
 
