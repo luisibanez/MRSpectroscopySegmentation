@@ -1,0 +1,4 @@
+This repository contains code intended to tests image segmentation methods
+suitable for MR spectroscopy data.
+
+The code is distributed under the Apache 2.0 license.
