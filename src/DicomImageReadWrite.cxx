@@ -38,11 +38,21 @@ int main( int argc, char* argv[] )
 
   const gdcm::DataSet & dataset = file.GetDataSet();
 
-  gdcm::Attribute<0x5600,0x0020> at;
+  gdcm::Attribute<0x0008,0x0016> at;
   at.Set( dataset );
 
-  std::cout << "VALUE = " << at.GetValue() << std::endl;
+  std::string SOPClassUID = at.GetValue();
+  std::string SOPClassUIDMRS = "1.2.840.10008.5.1.4.1.1.4";
 
+  std::cout << "SOPClassUID = " << SOPClassUID << std::endl;
+
+  if( SOPClassUID.compare(0,25,SOPClassUIDMRS) != 0 )
+    {
+    std::cerr << "The input file does not seem to be MR Spectroscpy data" << std::endl;
+    std::cerr << "Expected : " << SOPClassUIDMRS << " length = " << SOPClassUIDMRS.length() << std::endl;
+    std::cerr << "Found    : " << SOPClassUID    << " length = " << SOPClassUID.length()    << std::endl;
+    return EXIT_FAILURE;
+    }
 
   return EXIT_SUCCESS;
 
